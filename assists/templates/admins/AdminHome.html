@@ -1,0 +1,48 @@
+{% extends 'admins/adminbase.html'%}
+{%load static%}
+{%block contents%}
+
+<div class="col-sm-6 wow fadeInRight">
+    <h3 class="column-title">KEYSTROKE DYNAMICS SYSTEM AND FEATURES</h3>
+    <p>The study of a number of key events and the intervals
+        between them is known as the keystroke dynamics. In order to
+        capture timing features of keystroke, KeyPress and KeyRelease
+        are two most important extracted features.</p>
+    <p>In a keystroke dynamics system, users’ keystroke features
+        are first captured to create user profile for him/her. The
+        keystroke dynamic system then analyses users’ typing patterns
+        and creates user profile. From the user’s typing rhythm different
+        timing features are collected.</p>
+    <p>The system described in the earlier section in useful while
+        verifying the password. But when the user changes the
+        password, the model derived from the training of different
+        password may not work until a new model is developed for the
+        new password. The trained timing features will be helpful only
+        in verifying the user through their typing behaviour of specific
+        words. Entering login and password being Static keystroke
+        dynamics additional typing information cannot be captured
+        and their is a dependency on the model developed for the
+        specific password.</p>
+    <ul class="listarrow">
+        <li><i class="fa fa-angle-double-right"></i>Hold time is a distance between KeyPress and KeyRelease
+            timing
+        </li>
+        <li><i class="fa fa-angle-double-right"></i>UP-Up time is the distance between two consecutive
+            KeyReleases
+        </li>
+        <li><i class="fa fa-angle-double-right"></i>Up-Down time is the distance between a KeyRelease and
+            the next KeyPress
+        </li>
+        <li><i class="fa fa-angle-double-right"></i>Down- Down is the time between two consecutive Key-
+            Presses
+        </li>
+        <li><i class="fa fa-angle-double-right"></i>Down-Up time The time difference between a KeyPress
+            and the next KeyRelease is known as down-up time
+        </li>
+    </ul>
+
+
+</div>
+
+
+{%endblock%}
