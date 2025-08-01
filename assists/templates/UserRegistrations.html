@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block contents %}
+<div class="col-sm-6 wow fadeInRight">
+    <h3 class="column-title">User Registration Form</h3>
+    <h4 style="color: #ffffff;">Hello User! Your Keystroke is: {{ skda }}</h4>
+
+    <form action="{% url 'UserRegisterActions' %}" method="POST" style="width: 100%; padding: 0; background-color: transparent;">
+
+        {% csrf_token %}
+
+        <div class="form-group" style="margin-bottom: 20px;">
+            <label for="id_name" style="color: #ffffff; font-weight: bold; display: block;">User Name</label>
+            {{ form.name }}
+        </div>
+
+        <div class="form-group" style="margin-bottom: 20px;">
+            <label for="id_loginid" style="color: #ffffff; font-weight: bold; display: block;">Login ID</label>
+            {{ form.loginid }}
+        </div>
+
+        <div class="form-group" style="margin-bottom: 20px;">
+            <label for="id_password" style="color: #ffffff; font-weight: bold; display: block;">Password</label>
+            {{ form.password }}
+        </div>
+
+        <div class="form-group" style="margin-bottom: 20px;">
+            <label for="id_mobile" style="color: #ffffff; font-weight: bold; display: block;">Mobile</label>
+            {{ form.mobile }}
+        </div>
+
+        <div class="form-group" style="margin-bottom: 20px;">
+            <label for="id_email" style="color: #ffffff; font-weight: bold; display: block;">Email</label>
+            {{ form.email }}
+        </div>
+
+        <div class="form-group" style="margin-bottom: 20px;">
+            <label for="id_locality" style="color: #ffffff; font-weight: bold; display: block;">Locality</label>
+            {{ form.locality }}
+        </div>
+
+        <div class="form-group" style="margin-bottom: 20px;">
+            <label for="id_address" style="color: #ffffff; font-weight: bold; display: block;">Address</label>
+            {{ form.address }}
+        </div>
+
+        <div class="form-group" style="margin-bottom: 20px;">
+            <label for="id_city" style="color: #ffffff; font-weight: bold; display: block;">City</label>
+            {{ form.city }}
+        </div>
+
+        <div class="form-group" style="margin-bottom: 20px;">
+            <label for="id_state" style="color: #ffffff; font-weight: bold; display: block;">State</label>
+            {{ form.state }}
+        </div>
+
+        <div class="form-group" style="margin-bottom: 20px;">
+            <label for="id_status" style="color: #ffffff; font-weight: bold; display: block;">Status</label>
+            {{ form.status }}
+        </div>
+
+        <div class="form-group" style="margin-bottom: 20px;">
+            <label for="id_skda" style="color: #ffffff; font-weight: bold; display: block;">Keystroke Time</label>
+            {{ form.skda }}
+        </div>
+
+        <button id="done" class="btn btn-primary btn-block" type="submit" style="padding: 10px 15px; font-size: 16px; margin-top: 20px;">Register</button>
+
+        {% if messages %}
+            {% for message in messages %}
+                <p style="color: red; margin-top: 10px;">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    </form>
+
+    <script>
+        var doneButton = document.getElementById('done');
+        var pswdField = document.getElementById('id_password');
+        var lengthOfEmail = 0;
+        var time_start = 0;
+        var time_end = 0;
+
+        pswdField.onkeyup = function () {
+            lengthOfEmail++;
+            if (lengthOfEmail == 1) time_start = new Date();
+            else time_end = new Date().getTime() - time_start;
+        };
+
+        doneButton.onclick = function () {
+            document.getElementById("id_skda").value = time_end;
+        };
+
+        const signalKeypressDuration = (key, duration) => {
+            console.log(`Key ${key} pressed for ${duration} ms`);
+        };
+
+        const keys = {};
+        document.body.addEventListener("keydown", ({ key }) => {
+            if (!keys[key]) keys[key] = Date.now();
+        });
+        document.body.addEventListener("keyup", ({ key }) => {
+            signalKeypressDuration(key, Date.now() - keys[key]);
+            keys[key] = null;
+        });
+    </script>
+</div>
+{% endblock %}
