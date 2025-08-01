@@ -1,0 +1,141 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="webthemez">
+    <title>Static Keystroke Dynamic Authentication (SKDA) Model to Authenticate User during Password Change</title>
+    <!-- core CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/prettyPhoto.css' %}" rel="stylesheet">
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/slider-style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/slider-custom.css' %}" />
+    <script type="text/javascript" src="{% static 'js/modernizr.custom.79639.js' %}"></script>
+    <!--[if lt IE 9]>
+    <script src="{% static 'js/html5shiv.js' %}"></script>
+    <script src="{% static 'js/respond.min.js' %}"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="{% static 'images/ico/favicon.ico' %}">
+    
+    <style>
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #333; /* Dark background */
+            margin-top: 20px;
+        }
+
+        thead {
+            background-color: #444; /* Slightly lighter for contrast */
+        }
+
+        th, td {
+            color: white; /* White text color */
+            padding: 12px 18px; /* Ample padding for spacing */
+            border: 1px solid #ddd; /* Light border for cells */
+            text-align: left; /* Align text to the left */
+        }
+
+        th {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        td {
+            font-size: 14px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #555; /* Alternating row colors */
+        }
+
+        tr:hover {
+            background-color: #777; /* Hover effect */
+        }
+
+        .container {
+            margin-top: 30px; /* Add spacing around the content */
+        }
+
+        .table-responsive {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body id="home">
+<header id="header">
+    <nav id="main-nav" class="navbar navbar-default navbar-fixed-top" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{% url 'UserHome' %}">
+                    <h3>Keystroke Dynamic Authentication</h3>
+                </a>
+            </div>
+
+            <div class="collapse navbar-collapse navbar-right">
+                <ul class="nav navbar-nav">
+                    <li class="scroll"><a href="{% url 'UserHome' %}">Home</a></li>
+                    <li class="scroll"><a href="{% url 'DatasetView' %}">Dataset</a></li>
+                    <li class="scroll"><a href="{% url 'UserClassification' %}">Parameters</a></li>
+                    <li class="scroll"><a href="{% url 'UserChangePassword' %}">Change Password</a></li>
+                    <li class="scroll"><a href="{% url 'index' %}">Logout</a></li>
+                </ul>
+            </div>
+        </div><!--/.container-->
+    </nav><!--/nav-->
+</header><!--/header-->
+
+<section id="about">
+    <div class="container">
+       <h2>View Dataset</h2>
+       {{ data|safe }} <!-- Render dynamic content safely -->
+
+        <div class="row">
+            <div class="col-sm-6 wow fadeInLeft">
+                <img class="img-responsive" src="{% static 'images/about.png' %}" alt="">
+            </div>
+            {% block contents %}
+            {% endblock %}
+        </div>
+    </div>
+</section><!--/#about-->
+
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                &copy; 2024 Alex Corporations. Template by <a target="_blank" href="#"
+                                                              title="Free Bootstrap Themes and HTML Templates">Alex</a>
+            </div>
+        </div>
+    </div>
+</footer><!--/#footer-->
+
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/mousescroll.js' %}"></script>
+<script src="{% static 'js/smoothscroll.js' %}"></script>
+<script src="{% static 'js/jquery.prettyPhoto.js' %}"></script>
+<script src="{% static 'js/jquery.isotope.min.js' %}"></script>
+<script src="{% static 'js/jquery.inview.min.js' %}"></script>
+<script src="{% static 'js/wow.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/jquery.ba-cond.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/jquery.slitslider.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/slitslider-custom.js' %}"></script>
+<script src="{% static 'js/custom-scripts.js' %}"></script>
+</body>
+</html>
